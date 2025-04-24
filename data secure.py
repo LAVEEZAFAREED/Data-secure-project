@@ -5,9 +5,9 @@ import hashlib
 import json 
 import os
 import time
-from cryptography.fernet import fernet
-from based64 import urlsafe_b64encode
-from hashlib import pbkd2_hmac
+from cryptography.fernet import Fernet
+from base64 import urlsafe_b64encode
+from hashlib import pbkdf2_hmac
 
 #=== data information of user ===
 DATA_FILE = "secure_data.json"
@@ -29,7 +29,7 @@ def load_data():
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r") as f:
              return json.load(f)
-        return{}
+        
 
 def save_data(data):
     with open(DATA_FILE, "w") as f:
@@ -44,13 +44,14 @@ def hash_password(password):
 
 # === cryptography.fernet used ===
 def encrypt_text(text,key):
-    cipher = fernet(generate_key(key))
+    cipher = Fernet(generate_key(key))
     return cipher.encrypt(text.encode()).decode()
 
 def decrypt_text(encrypt_text):
     try:
-        with open('file.txt') as f:
-        data = f.read()
+        with open('somefile.txt') as f:
+    data = f.read()  # <- indented!
+        
 except:
     # how to handle the failure
     print("Error reading the file.")
@@ -61,7 +62,7 @@ stored_data = load_data()
 # === navigation bar ===
 st.title("🔐 Secure Data  Encryption System")
 menu = ["Home", "Register","Login","Store Data","Retieve Data"]
-choice = st.sidebar.selection("Navigation", menu)
+choice = st.sidebar.selectbox("Navigation", menu)
 
 if choice == "Home":
     st.subheader("Welcome to my 🔐 Data Encryption System Using Streamlit !")
@@ -71,13 +72,13 @@ if choice == "Home":
        without external databasses.""")
 
 # === user registration ===
-elif choice == "Registeer":
+elif choice == "Register":
     st.subheader("✏️ Register New User")
     username = st.text_input("Choose Username")
     password = st.text_input("Choose Password", type= "password")
 
 if st.button("Register"):
-    if username in and password:
+    if username and password:
         if username in stored_data:
             st.warning("⚠️ User already exisits.")
 
@@ -108,7 +109,7 @@ if st.button("Register"):
                 st.success(f"✅ Welcome {username}!")
 
             else:
-                session_state.failed_attempts += 1
+                st.session_state.failed_attempts += 1
                 remaining = 3 - st.session_state.failed_attempts
                 st.error(f"❌ Invalid Credentials! Attempts left: {remaining}")
 
@@ -139,7 +140,7 @@ elif choice == "Store Data":
         if not st.session_state.authenticated_user:
             st.warning("🔓 Please login first")
         else:
-            st.subheader("🔎 Retieve data")
+            st.subheader("🔎 Retrieve data")
             user_data = stored_data.get(st.session_state.authenticated_user,{}).get("data",[])
 
             if not user_data:
