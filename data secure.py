@@ -50,7 +50,7 @@ def encrypt_text(text,key):
 def decrypt_text(encrypt_text):
     try:
         with open('somefile.txt') as f:
-    data = f.read()  # <- indented!
+    data = f.read()
         
 except:
     # how to handle the failure
