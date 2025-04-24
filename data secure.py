@@ -49,10 +49,9 @@ def encrypt_text(text,key):
 
 def decrypt_text(encrypt_text):
     try:
-        cipher = fernet(generate_key(key))
-        return cipher.decrypt(encrypt_text.encode()).decode()
+        risky_operation()
         except:
-            return None
+            print("Something went wrong.")
 
 stored_data = load_data()
 
