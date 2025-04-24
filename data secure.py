@@ -48,12 +48,14 @@ def encrypt_text(text,key):
     return cipher.encrypt(text.encode()).decode()
 
 def decrypt_text(encrypt_text):
-    try:
-        with open('somefile.txt') as f:
-             data = f.read()
-        
-except:
-    print("Something went wrong.")
+   try:
+    with open("file.txt", "r") as f:
+        data = f.read()
+except FileNotFoundError:
+    print("File not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+ 
         
 
 stored_data = load_data()
