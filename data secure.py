@@ -53,8 +53,7 @@ def decrypt_text(encrypt_text):
              data = f.read()
         
 except:
-    # how to handle the failure
-    print("Error reading the file.")
+    print("Something went wrong.")
         
 
 stored_data = load_data()
