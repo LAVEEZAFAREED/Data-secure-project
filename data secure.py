@@ -49,8 +49,8 @@ def encrypt_text(text,key):
 
 def decrypt_text(encrypt_text):
     try:
-    with open("yourfilename.txt", "r") as f:
-        data = f.read()
+        with open("yourfilename.txt", "r") as f:
+            data = f.read()
 except FileNotFoundError:
     print("File not found.")
 except Exception as e:
