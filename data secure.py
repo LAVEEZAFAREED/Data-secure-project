@@ -49,9 +49,12 @@ def encrypt_text(text,key):
 
 def decrypt_text(encrypt_text):
     try:
-        risky_operation()
-        except:
-            print("Something went wrong.")
+        with open('file.txt') as f:
+        data = f.read()
+except:
+    # how to handle the failure
+    print("Error reading the file.")
+        
 
 stored_data = load_data()
 
