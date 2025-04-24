@@ -28,7 +28,7 @@ if "lockout_time" not in st.session_state:
 def load_data():
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r") as f:
-        return json.load(f)
+             return json.load(f)
         return{}
 
 def save_data(data):
