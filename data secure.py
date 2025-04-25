@@ -96,7 +96,7 @@ elif choice == "Login":
             remaining = int(st.session_state.lockout_time - time.time())
             st.error(f"⏱️ Too many failed attempts. please wait {remaining} seconds.")
             st.stop()
-        username = st.text_input("Username")
+   username = st.text_input("Username")
         password = st.text_input("Password", type = "password")
 
         if st.button("Login"):
