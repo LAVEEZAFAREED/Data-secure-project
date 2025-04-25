@@ -86,7 +86,7 @@ if st.button("Register"):
             }
             save_data(stored_data)
             st.success("✅ User Register Successfully!")
-        else:
+       else:
             st.error("Both fields are required.")
 
  elif choice == "Login":
