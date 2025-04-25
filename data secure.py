@@ -100,7 +100,7 @@ elif choice == "Login":
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
 
-        if st.button("Login"):
+    if st.button("Login"):
             if username in stored_data and stored_data[username]["password"] == hash_password(password):
                 st.session_state.authenticated_user = username
                 st.session_state.failed_attempts = 0
@@ -112,7 +112,7 @@ elif choice == "Login":
     
                 st.error(f"❌ Invalid Credentials! Attempts left: {remaining}")
 
-                if st.session_state.failed_attempts >= 3:
+           if st.session_state.failed_attempts >= 3:
                     st.session_state("🔴 To many failed attempts. Locked for 60 seconds.")
                     st.stop()
 
