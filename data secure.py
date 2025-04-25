@@ -93,11 +93,12 @@ elif choice == "Login":
     st.subheader("🔑 User Login")
 
     if time.time() < st.session_state.lockout_time:
-            remaining = int(st.session_state.lockout_time - time.time())
-            st.error(f"⏱️ Too many failed attempts. please wait {remaining} seconds.")
-            st.stop()
-   username = st.text_input("Username")
-        password = st.text_input("Password", type = "password")
+        remaining = int(st.session_state.lockout_time - time.time())
+        st.error(f"⏱️ Too many failed attempts. Please wait {remaining} seconds.")
+        st.stop()
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
 
         if st.button("Login"):
             if username in stored_data and stored_data[username]["password"] == hash_password(password):
@@ -107,7 +108,8 @@ elif choice == "Login":
 
             else:
                 st.session_state.failed_attempts += 1
-                remaining = 3 - st.session_state.failed_attempts
+                remaining = 3 - st.session_state.failed_atelif choice == "Login":
+    
                 st.error(f"❌ Invalid Credentials! Attempts left: {remaining}")
 
                 if st.session_state.failed_attempts >= 3:
