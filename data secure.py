@@ -49,12 +49,10 @@ def encrypt_text(text,key):
 
 def decrypt_text(encrypt_text):
    try: 
-      with open("yourfilename.txt", "r") as f:
-        data = f.read()
-except FileNotFoundError:
-    st.error("File not found.")
-except Exception as e:
-    st.error(f"An unexpected error occurred: {e}")
+       cipher = Fernet(generate_key(key))
+       return cipher.decrypt(encrypt_text.encode()).decode()
+             except:
+                 return None
   
 
 
