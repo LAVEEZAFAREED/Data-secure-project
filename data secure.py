@@ -51,8 +51,8 @@ def decrypt_text(encrypt_text,key):
    try: 
        cipher = Fernet(generate_key(key))
        return cipher.decrypt(encrypt_text.encode()).decode()
-       except:
-                 return None
+  except:
+          return None
   
 stored_data = load_data()
 
