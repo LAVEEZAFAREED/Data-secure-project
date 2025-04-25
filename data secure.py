@@ -72,8 +72,8 @@ if choice == "Home":
 elif choice == "Register":
     st.subheader("✏️ Register New User")
     username = st.text_input("Choose Username")
-    password = st.text_input("Choose Password", type= "password")
- if choice == "Register":
+    password = st.text_input("Choose Password", type= "password") 
+if choice == "Register":
     st.subheader("📝 User Registration")
     if st.button("Register"):
         if username and password:
